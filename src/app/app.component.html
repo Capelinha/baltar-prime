@@ -1,0 +1,66 @@
+<div class="full-width mt-2" fxLayoutAlign="center start">
+  <img src="https://i.imgur.com/kB6Phue.png" width="150px">
+</div>
+<mat-vertical-stepper [linear]="true" #stepper style="background: none; margin: 0% 10% 4% 10%">
+  <mat-step editable="false">
+    <ng-template matStepLabel>Primes</ng-template>
+    <div>
+      <small class="mt-1">Primeiro faça upload da lista de primes atualizada</small>
+      <input #fileImportInput type="file" style="visibility: hidden" (change)="fileChangeEvent($event)"/><br>
+      <button mat-raised-button color="primary" (click)="selectFile()" class="mt-1">Selecionar lista de primes</button>
+    </div>
+  </mat-step>
+  <mat-step editable="false">
+    <ng-template matStepLabel>Chances</ng-template>
+    <small class="mt-1">Insira o numero de entradas para cada nível de prime</small>
+    <form [formGroup]="configForm">
+      <mat-form-field appearance="fill" color="primary" class="mt-1 full-width">
+        <mat-label>Prime de papelão</mat-label>
+        <input matInput required [imask]="NUMBER_MASK" formControlName="fake" [unmask]="true">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" color="primary" class="mt-1 full-width">
+        <mat-label>Prime de bronze</mat-label>
+        <input matInput required [imask]="NUMBER_MASK" formControlName="bronze" [unmask]="true">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="primary" class="mt-1 full-width">
+        <mat-label>Prime de prata</mat-label>
+        <input matInput required [imask]="NUMBER_MASK" formControlName="prata" [unmask]="true">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" color="primary" class="mt-1 full-width">
+        <mat-label>Prime de ouro</mat-label>
+        <input matInput required [imask]="NUMBER_MASK" formControlName="ouro" [unmask]="true">
+      </mat-form-field>
+    </form>
+
+    <button mat-raised-button color="primary" class="mt-1" [disabled]="configForm.invalid" (click)="prepare()" fxLayoutAlign="center center"
+    style="min-width: 134px;">
+      <span *ngIf="!preparing">Preparar sorteio</span>
+      <mat-progress-spinner diameter="20" mode="indeterminate" color="accent" class="m-05" *ngIf="preparing"></mat-progress-spinner>  
+    </button>
+  </mat-step>
+  <mat-step editable="false">
+    <ng-template matStepLabel>Sorteio</ng-template>
+    
+    <div class="full-width" fxLayoutAlign="center start">
+      <button mat-raised-button color="primary" class="mt-1" *ngIf="!showResult" (click)="random()">Iniciar sorteio</button>
+      <button mat-stroked-button color="primary" class="mt-1" *ngIf="showResult" (click)="restart()">Reiniciar</button>
+    </div>
+
+    <div style="height: 110px">
+      <div class="wheel-container mt-1 mb-1" *ngIf="showSpinner">
+        <div class="divider"></div>
+        <div class="wheel" [ngClass]="{ 'animate': showResult }">
+          <div class="entry" [ngClass]="getColor(prime)" *ngFor="let prime of primesList">
+            <div fxLayoutAlign="center center" style="height: 100%" fxLayout="column">
+              <h3 class="m-0">{{ prime.Username }}</h3>
+              <small class="m-0">{{ prime.Tenure }} mês</small>
+            </div>
+          </div>
+        </div>   
+      </div> 
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
