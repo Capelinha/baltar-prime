@@ -45,7 +45,7 @@
 .divider {
   width: 5px;
   height: 110px;
-  margin-left: calc(50vw - 2.5px);
+  left: calc(50% - 2.5px);
   position: absolute;
   background: #f9a825;
   z-index: 10;
@@ -57,7 +57,7 @@
   display: flex;
   position: absolute;
   border: solid 5px #320264;
-  left: calc(50vw - 2.5px);
+  left: calc(50%);
 }
 
 .wheel.animate {
@@ -67,7 +67,7 @@
 
 @keyframes spin {
   from {
-    left: calc(50vw - 2.5px);
+    left: calc(50%);
   }
   
   to {
