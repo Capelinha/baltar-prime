@@ -100,6 +100,14 @@
   background: linear-gradient(0deg, rgba(210,93,1,1) 0%, rgba(255,250,0,1) 50%, rgba(210,93,1,1) 100%);
 }
 
+.diamante {
+  background: linear-gradient(0deg, rgba(1, 124, 218, 1) 0%, rgba(98, 216, 253, 1) 50%, rgba(1, 124, 218, 1) 100%);
+}
+
+.gelo {
+  background: linear-gradient(0deg, rgba(149, 251, 255 ,1) 0%, rgba(0, 244, 255, 1) 50%, rgba(149, 251, 255 ,1) 100%);
+}
+
 ::ng-deep .mat-vertical-stepper-header {
   pointer-events: none !important;
 }

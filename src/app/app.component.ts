@@ -56,8 +56,10 @@ export class AppComponent implements OnInit  {
     this.configForm = this.fb.group({
       fake: [1, Validators.required],
       bronze: [2, Validators.required],
-      prata: [2, Validators.required],
-      ouro: [3, Validators.required],
+      prata: [3, Validators.required],
+      ouro: [4, Validators.required],
+      diamante: [5, Validators.required],
+      gelo: [6, Validators.required]
     })
   }
 
@@ -122,14 +124,18 @@ export class AppComponent implements OnInit  {
   }
 
   getPrimeLevel(prime: IPrime) {
-    if (prime.Tenure <= 1) {
+    if (prime.Tenure < 2) {
       return 'fake';
-    } else if (prime.Tenure > 1 && prime.Tenure < 6) {
+    } else if (prime.Tenure >= 2 && prime.Tenure < 6) {
       return 'bronze';
     } else if (prime.Tenure >= 6 && prime.Tenure < 9) {
       return 'prata';
-    } else {
+    } else if (prime.Tenure >= 9 && prime.Tenure < 12) {
       return 'ouro';
+    } else if (prime.Tenure >= 12 && prime.Tenure < 18) {
+      return 'diamante';
+    } else {
+      return 'gelo';
     }
   }
 
