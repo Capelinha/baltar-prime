@@ -120,7 +120,7 @@ export class AppComponent implements OnInit  {
     const engine = MersenneTwister19937.autoSeed();
     const winner = integer(0, this.primesList.length - 1)(engine);
     this.winnerIndex = winner + 200;
-    console.log(this.winnerIndex);
+    console.log(this.primesList[winner]);
     this.showResult = true;
   }
 
