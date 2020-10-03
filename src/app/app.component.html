@@ -69,7 +69,7 @@
       <div class="wheel-container mt-1 mb-1" *ngIf="showSpinner">
         <div class="divider"></div>
         <div class="wheel" [ngClass]="{ 'animate': showResult }">
-          <div class="entry" [ngClass]="getColor(prime)" *ngFor="let prime of primesList">
+          <div class="entry" [ngClass]="getColor(prime)" *ngFor="let prime of primesView">
             <div fxLayoutAlign="center center" style="height: 100%" fxLayout="column">
               <h3 class="m-0">{{ prime.Username }}</h3>
               <small class="m-0">{{ prime.Tenure }} {{ prime.Tenure > 1 ? 'meses' : 'mês'}}</small>

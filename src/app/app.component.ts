@@ -39,6 +39,8 @@ export class AppComponent implements OnInit  {
 
   primesList: IPrime[];
 
+  primesView: IPrime[];
+
   @ViewChild('fileImportInput')
   fileImportInput: any;
 
@@ -105,6 +107,8 @@ export class AppComponent implements OnInit  {
 
         this.primesList = shuffle(engine, this.primesList);
 
+        this.primesView = [...this.primesList.slice(0, 200), ...this.primesList];
+
         this.stepper.selected.completed = true;
         this.showSpinner = true;
         this.stepper.next();
@@ -115,7 +119,8 @@ export class AppComponent implements OnInit  {
   random() {
     const engine = MersenneTwister19937.autoSeed();
     const winner = integer(0, this.primesList.length - 1)(engine);
-    this.winnerIndex = winner;
+    this.winnerIndex = winner + 200;
+    console.log(this.winnerIndex);
     this.showResult = true;
   }
 
