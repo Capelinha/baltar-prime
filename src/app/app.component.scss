@@ -126,7 +126,7 @@
   box-sizing: border-box;
   z-index: 500;
   clip-path: circle(0);
-  animation: grow 500ms ease-in 2s;
+  animation: grow 500ms ease-in calc(var(--time) + 1000ms);
   animation-fill-mode: forwards;
 
   .wrapper {

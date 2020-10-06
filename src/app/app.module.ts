@@ -12,6 +12,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IMaskModule } from 'angular-imask';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatStepperModule,
     BrowserAnimationsModule,
     IMaskModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]

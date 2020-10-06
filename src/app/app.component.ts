@@ -2,7 +2,8 @@ import { Component, HostBinding,  OnInit, ViewChild } from '@angular/core';
 import { NgxCsvParser } from 'ngx-csv-parser';
 import { MatVerticalStepper } from '@angular/material/stepper';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MersenneTwister19937, shuffle, integer } from "random-js";
+import { MersenneTwister19937, shuffle, integer } from 'random-js';
+import { TwitchService } from './services/twitch.service';
 
 interface IPrime {
   Username: string,
@@ -10,6 +11,7 @@ interface IPrime {
   'Current Tier': string,
   Tenure: number,
   Streak: number,
+  imageUrl?: string,
   'Sub Type': string,
   Founder: boolean
 }
@@ -49,6 +51,8 @@ export class AppComponent implements OnInit  {
   @HostBinding('style.--random-number')
   winnerIndex = 100;
 
+  winner: IPrime;
+
   @HostBinding('style.--time')
   time = '120ms';
 
@@ -57,6 +61,7 @@ export class AppComponent implements OnInit  {
   preparing = false;
   
   constructor(private ngxCsvParser: NgxCsvParser,
+              private twitchService: TwitchService,
               private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -134,7 +139,12 @@ export class AppComponent implements OnInit  {
     
     this.primesView[10 * time] = winner;
     this.winnerIndex = 10 * time;
+    this.winner = winner;
     this.time = `${Number(time) * 1000}ms`;
+
+    this.twitchService.getProfileImage(winner.Username).subscribe((response) => {
+      winner.imageUrl = response.data[0].profile_image_url;
+    })
 
     console.log(winner);
     this.showResult = true;
