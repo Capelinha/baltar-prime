@@ -26,7 +26,7 @@ export class TwitchService {
   getProfileImage(username: string) {
     const params = new HttpParams().set('login', username);
     const headers = new HttpHeaders().set('client-id', '')
-                                     .set('Authorization', '');
+                                     .set('Authorization', 'Bearer ');
 
     return this.http.get<ITwitchResponse>('https://api.twitch.tv/helix/users', { params, headers });
   }

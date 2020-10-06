@@ -142,9 +142,12 @@ export class AppComponent implements OnInit  {
     this.winner = winner;
     this.time = `${Number(time) * 1000}ms`;
 
-    this.twitchService.getProfileImage(winner.Username).subscribe((response) => {
-      winner.imageUrl = response.data[0].profile_image_url;
-    })
+    this.twitchService.getProfileImage(winner.Username).subscribe(
+      (response) => {
+        winner.imageUrl = response.data[0].profile_image_url;
+      },
+      (e) => console.error(e)
+    );
 
     console.log(winner);
     this.showResult = true;
