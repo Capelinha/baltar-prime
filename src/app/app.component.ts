@@ -37,6 +37,8 @@ export class AppComponent implements OnInit  {
 
   configForm: FormGroup;
 
+  primesListOriginal: IPrime[];
+
   primesList: IPrime[];
 
   primesView: IPrime[];
@@ -46,6 +48,9 @@ export class AppComponent implements OnInit  {
 
   @HostBinding('style.--random-number')
   winnerIndex = 100;
+
+  @HostBinding('style.--time')
+  time = '120ms';
 
   showResult = false;
   showSpinner = false;
@@ -61,7 +66,8 @@ export class AppComponent implements OnInit  {
       prata: [3, Validators.required],
       ouro: [4, Validators.required],
       diamante: [5, Validators.required],
-      gelo: [6, Validators.required]
+      gelo: [6, Validators.required],
+      time: [120, Validators.required]
     })
   }
 
@@ -77,7 +83,7 @@ export class AppComponent implements OnInit  {
         result.forEach((prime) => {
           prime.Tenure = Number(prime.Tenure);
         })
-        this.primesList = result;
+        this.primesListOriginal = result;
 
         this.stepper.selected.completed = true;
         this.stepper.next();
@@ -93,7 +99,7 @@ export class AppComponent implements OnInit  {
       this.preparing = true;
 
       setTimeout(() => {
-        this.primesList = this.primesList.reduce((list, prime) => {
+        this.primesList = this.primesListOriginal.reduce((list, prime) => {
           const entryCount = values[this.getPrimeLevel(prime)];
 
           for (let i = 0; i < entryCount; i++) {
@@ -107,7 +113,11 @@ export class AppComponent implements OnInit  {
 
         this.primesList = shuffle(engine, this.primesList);
 
-        this.primesView = [...this.primesList.slice(0, 200), ...this.primesList];
+        this.primesView = [];
+
+        while (this.primesView.length < 10 * values.time) {
+          this.primesView.push(...this.primesListOriginal);
+        }
 
         this.stepper.selected.completed = true;
         this.showSpinner = true;
@@ -118,9 +128,15 @@ export class AppComponent implements OnInit  {
 
   random() {
     const engine = MersenneTwister19937.autoSeed();
-    const winner = integer(0, this.primesList.length - 1)(engine);
-    this.winnerIndex = winner + 200;
-    console.log(this.primesList[winner]);
+    const winnerIndex = integer(0, this.primesList.length - 1)(engine);
+    const winner = this.primesList[winnerIndex];
+    const time = this.configForm.value.time;
+    
+    this.primesView[10 * time] = winner;
+    this.winnerIndex = 10 * time;
+    this.time = `${Number(time) * 1000}ms`;
+
+    console.log(winner);
     this.showResult = true;
   }
 

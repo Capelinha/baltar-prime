@@ -49,6 +49,12 @@
         <input matInput required [imask]="NUMBER_MASK" formControlName="gelo" [unmask]="true">
         <mat-hint>18 meses</mat-hint>
       </mat-form-field>
+
+      <mat-form-field appearance="fill" color="primary" class="mt-2 full-width">
+        <mat-label>Tempo de sorteio</mat-label>
+        <input matInput required [imask]="NUMBER_MASK" formControlName="time" [unmask]="true">
+        <mat-hint>segundos</mat-hint>
+      </mat-form-field>
     </form>
 
     <button mat-raised-button color="primary" class="mt-1" [disabled]="configForm.invalid" (click)="prepare()" fxLayoutAlign="center center"

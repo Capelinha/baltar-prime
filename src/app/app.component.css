@@ -1,5 +1,6 @@
 :host {
-  --random-number: 100
+  --random-number: 100;
+  --time: 120ms;
 }
 
 .full-width {
@@ -65,7 +66,7 @@
 }
 
 .wheel.animate {
-  animation: spin calc(var(--random-number) * 10ms) cubic-bezier(0.25, 0.92, 0.4, 0.97);
+  animation: spin var(--time) ease-out;
   animation-fill-mode: forwards;
 }
 
