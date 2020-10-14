@@ -15,6 +15,10 @@
   margin-top: 1rem;
 }
 
+.ml-1 {
+  margin-left: 1rem;
+}
+
 .mb-1 {
   margin-bottom: 1rem;
 }
@@ -29,6 +33,10 @@
 
 .mb-2 {
   margin-bottom: 2rem;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
 }
 
 .m-0 {
@@ -74,7 +82,7 @@
   from {
     left: calc(50%);
   }
-  
+
   to {
     left: calc(50% + var(--random-number) * -250px - 125px);
   }
@@ -86,31 +94,61 @@
   border-right: solid 1px #320264;
   border-left: solid 1px #320264;
   box-sizing: border-box;
-  color: #FFF;
+  color: #fff;
 }
 
 .fake {
-  background: linear-gradient(0deg, rgba(181,142,79,1) 0%, rgba(235,196,133,1) 50%, rgba(181,142,79,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(181, 142, 79, 1) 0%,
+    rgba(235, 196, 133, 1) 50%,
+    rgba(181, 142, 79, 1) 100%
+  );
 }
 
 .bronze {
-  background: linear-gradient(0deg, rgba(161,77,31,1) 0%, rgba(252,144,88,1) 50%, rgba(127,59,24,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(161, 77, 31, 1) 0%,
+    rgba(252, 144, 88, 1) 50%,
+    rgba(127, 59, 24, 1) 100%
+  );
 }
 
 .prata {
-  background: linear-gradient(0deg, rgba(58,58,58,1) 0%, rgba(226,226,224,1) 50%, rgba(58,58,58,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(58, 58, 58, 1) 0%,
+    rgba(226, 226, 224, 1) 50%,
+    rgba(58, 58, 58, 1) 100%
+  );
 }
 
 .ouro {
-  background: linear-gradient(0deg, rgba(210,93,1,1) 0%, rgba(255,250,0,1) 50%, rgba(210,93,1,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(210, 93, 1, 1) 0%,
+    rgba(255, 250, 0, 1) 50%,
+    rgba(210, 93, 1, 1) 100%
+  );
 }
 
 .diamante {
-  background: linear-gradient(0deg, rgba(1, 124, 218, 1) 0%, rgba(98, 216, 253, 1) 50%, rgba(1, 124, 218, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(1, 124, 218, 1) 0%,
+    rgba(98, 216, 253, 1) 50%,
+    rgba(1, 124, 218, 1) 100%
+  );
 }
 
 .gelo {
-  background: linear-gradient(0deg, rgba(149, 251, 255 ,1) 0%, rgba(0, 244, 255, 1) 50%, rgba(149, 251, 255 ,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(149, 251, 255, 1) 0%,
+    rgba(0, 244, 255, 1) 50%,
+    rgba(149, 251, 255, 1) 100%
+  );
 }
 
 ::ng-deep .mat-vertical-stepper-header {
@@ -132,67 +170,105 @@
   .wrapper {
     height: 100%;
     width: 100%;
-    background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1,#FFDC18, #FF3706);
+    background: linear-gradient(
+      45deg,
+      #f17c58,
+      #e94584,
+      #24aadb,
+      #27dbb1,
+      #ffdc18,
+      #ff3706
+    );
     background-size: 600% 100%;
     animation: gradient 16s linear infinite;
     animation-direction: alternate;
   }
 
+  .confetti {
+    width: 15px;
+    height: 15px;
+    background-color: #f2d74e;
+    position: absolute;
+    left: 50%;
+    animation: confetti 5s ease-in-out -2s infinite;
+    transform-origin: left top;
+  }
+  .confetti:nth-child(1) {
+    background-color: #f2d74e;
+    left: 10%;
+    animation-delay: 0;
+  }
+  .confetti:nth-child(2) {
+    background-color: #95c3de;
+    left: 20%;
+    animation-delay: -5s;
+  }
+  .confetti:nth-child(3) {
+    background-color: #ff9a91;
+    left: 30%;
+    animation-delay: -3s;
+  }
+  .confetti:nth-child(4) {
+    background-color: #f2d74e;
+    left: 40%;
+    animation-delay: -2.5s;
+  }
+  .confetti:nth-child(5) {
+    background-color: #95c3de;
+    left: 50%;
+    animation-delay: -4s;
+  }
+  .confetti:nth-child(6) {
+    background-color: #ff9a91;
+    left: 60%;
+    animation-delay: -6s;
+  }
+  .confetti:nth-child(7) {
+    background-color: #f2d74e;
+    left: 70%;
+    animation-delay: -1.5s;
+  }
+  .confetti:nth-child(8) {
+    background-color: #95c3de;
+    left: 80%;
+    animation-delay: -2s;
+  }
+  .confetti:nth-child(9) {
+    background-color: #ff9a91;
+    left: 90%;
+    animation-delay: -3.5s;
+  }
+  .confetti:nth-child(10) {
+    background-color: #f2d74e;
+    left: 100%;
+    animation-delay: -2.5s;
+  }
 
-.confetti {
-  width: 15px;
-  height: 15px;
-  background-color: #f2d74e;
-  position: absolute;
-  left: 50%;
-  animation: confetti 5s ease-in-out -2s infinite;
-  transform-origin: left top;
-}
-.confetti:nth-child(1) {
-  background-color: #f2d74e; left: 10%; animation-delay: 0;
-}
-.confetti:nth-child(2) {
-  background-color: #95c3de; left: 20%; animation-delay: -5s;
-}
-.confetti:nth-child(3) {
-  background-color: #ff9a91; left: 30%; animation-delay: -3s;
-}
-.confetti:nth-child(4) {
-  background-color: #f2d74e; left: 40%; animation-delay: -2.5s;
-}
-.confetti:nth-child(5) {
-  background-color: #95c3de; left: 50%; animation-delay: -4s;
-}
-.confetti:nth-child(6) {
-  background-color: #ff9a91; left: 60%; animation-delay: -6s;
-}
-.confetti:nth-child(7) {
-  background-color: #f2d74e; left: 70%; animation-delay: -1.5s;
-}
-.confetti:nth-child(8) {
-  background-color: #95c3de; left: 80%; animation-delay: -2s;
-}
-.confetti:nth-child(9) {
-  background-color: #ff9a91; left: 90%; animation-delay: -3.5s;
-}
-.confetti:nth-child(10) {
-  background-color: #f2d74e; left: 100%; animation-delay: -2.5s;
-}
-
-@keyframes confetti {
-  0% { transform: rotateZ(15deg) rotateY(0deg) translate(0,0); }
-  25% { transform: rotateZ(5deg) rotateY(360deg) translate(-5vw,20vh); }
-  50% { transform: rotateZ(15deg) rotateY(720deg) translate(5vw,60vh); }
-  75% { transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw,80vh); }
-  100% { transform: rotateZ(15deg) rotateY(1440deg) translate(10vw,110vh); }
-}
+  @keyframes confetti {
+    0% {
+      transform: rotateZ(15deg) rotateY(0deg) translate(0, 0);
+    }
+    25% {
+      transform: rotateZ(5deg) rotateY(360deg) translate(-5vw, 20vh);
+    }
+    50% {
+      transform: rotateZ(15deg) rotateY(720deg) translate(5vw, 60vh);
+    }
+    75% {
+      transform: rotateZ(5deg) rotateY(1080deg) translate(-10vw, 80vh);
+    }
+    100% {
+      transform: rotateZ(15deg) rotateY(1440deg) translate(10vw, 110vh);
+    }
+  }
 
   .winner-container {
     max-width: 400px;
     margin: 2rem;
 
-    h1, h2 {
-      color: #FFF !important;
+    h1,
+    h2 {
+      color: #fff !important;
     }
 
     button {
@@ -202,8 +278,12 @@
 }
 
 @keyframes gradient {
-    0% {background-position: 0%}
-    100% {background-position: 100%}
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 
 .hidden {
