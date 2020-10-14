@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders,  HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 export interface ITwitchUser {
@@ -18,16 +18,20 @@ export interface ITwitchResponse {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TwitchService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProfileImage(username: string) {
-    const params = new HttpParams().set('login', username);
-    const headers = new HttpHeaders().set('client-id', '')
-                                     .set('Authorization', 'Bearer ');
+    const params = new HttpParams().set("login", username);
+    const headers = new HttpHeaders()
+      .set("client-id", "")
+      .set("Authorization", "Bearer ");
 
-    return this.http.get<ITwitchResponse>('https://api.twitch.tv/helix/users', { params, headers });
+    return this.http.get<ITwitchResponse>("https://api.twitch.tv/helix/users", {
+      params,
+      headers
+    });
   }
 }

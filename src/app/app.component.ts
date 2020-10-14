@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
       ouro: [4, Validators.required],
       diamante: [5, Validators.required],
       gelo: [6, Validators.required],
-      time: [120, Validators.required]
+      time: [90, Validators.required]
     });
   }
 
@@ -209,7 +209,7 @@ export class AppComponent implements OnInit {
     this.winner = winner;
     this.time = `${Number(time) * 1000}ms`;
 
-    this.comment = this.instagramComments.find((comment) => comment.comment.includes(winner.Username));
+    this.comment = this.instagramComments?.find((comment) => comment.comment.includes(winner.Username));
 
     this.twitchService.getProfileImage(winner.Username).subscribe(
       response => {
